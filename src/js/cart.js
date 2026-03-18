@@ -1,10 +1,17 @@
 import { getLocalStorage } from "./utils.mjs";
 
 function renderCartContents() {
-  const cartItems = getLocalStorage("so-cart");
+  const cartItems = getLocalStorage("so-cart") || []; 
+  if (!Array.isArray(cartItems)) {
+    console.warn("El carrito no es una lista válida. Limpiando...");
+    localStorage.removeItem("so-cart");
+    return;
+  }
+
   const htmlItems = cartItems.map((item) => cartItemTemplate(item));
   document.querySelector(".product-list").innerHTML = htmlItems.join("");
 }
+
 
 function cartItemTemplate(item) {
   const newItem = `<li class="cart-card divider">
