@@ -8,20 +8,18 @@
 
     <title>Sleep Outside | Checkout</title>
 
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="../css/style.css" />
   </head>
 
   <body>
-    <header class="divider">
+    <header class="divider" id="main-header">
       <div class="logo">
-        <img src="images/noun_Tent_2517.svg" alt="tent image for logo" />
-
-        <a href="index.html">
-          Sleep
-          <span class="highlight">Outside</span>
+        <img src="../images/noun_Tent_2517.svg" alt="tent image for logo" />
+        <a href="../index.html">
+          <span class="highlight">OutsideSleep</span>
         </a>
       </div>
-
+    </header>
       <div class="cart">
         <a href="cart/">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
@@ -57,11 +55,37 @@
     </header>
 
     <main class="divider">
-      <section class="products">
-        <h2>Review & Place your Order</h2>
-      </section>
+        <section class="checkout-form">
+            <h2>Review & Place your Order</h2>
+            <form id="checkout-form">
+                <fieldset>
+                    <legend>Shipping Information</legend> 
+                            <input type="text" name="fname" placeholder="Name" required> 
+                            <input type="text" name="lname" placeholder="Last Name" required> 
+                            <input type="text" name="street" placeholder="Address" required> 
+                            <input type="text" name="city" placeholder="City" required> 
+                            <input type="text" name="state" placeholder="State" required> 
+                            <input type="text" name="zip" id="zip" placeholder="Zip Code" required>
+                </fieldset>
+                <fieldset>
+                    <legend>Payment</legend> 
+                    <input type="text" name="cardNumber" placeholder="Card Number" required> 
+                    <input type="text" name="expiration" placeholder="Exp (MM/YY)" required> 
+                    <input type="text" name="code" placeholder="CVC" required>
+                </fieldset>
+                <fieldset id="order-summary">
+                    <legend>Order Summary</legend> 
+                      <p>Subtotal: <span id="subtotal"></span></p> 
+                      <p>Shipping: <span id="shipping"></span></p> 
+                      <p>Tax: <span id="tax"></span></p> 
+                      <p><b>Total: <span id="orderTotal"></span></b></p>
+                </fieldset> 
+                <button type="submit" id="checkoutSubmit">Pay now</button>
+            </form>
+        </section>
     </main>
 
     <footer>&copy;NOT a real business</footer>
+    <script src="../js/checkout.js" type="module"></script>
   </body>
 </html>
