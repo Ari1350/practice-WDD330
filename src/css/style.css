@@ -280,3 +280,20 @@ footer {
   font-weight: bold;
   z-index: 99;
 }
+
+.alert {
+  padding: 15px;
+  background-color: #f44336; 
+  color: white;
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.alert span {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}

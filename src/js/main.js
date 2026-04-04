@@ -4,6 +4,13 @@ import { updateCartBadge } from './utils.mjs';
 
 const dataSource = new ProductData('tents');
 const listElement = document.querySelector('.product-list');
-const myList = new ProductList('tents', dataSource, listElement);
-myList.init();
+//const myList = new ProductList('tents', dataSource, listElement);
+//myList.init();
+//updateCartBadge();
+
+if (listElement) {
+    const myList = new ProductList('tents', dataSource, listElement);
+    myList.init();
+}
+
 updateCartBadge();
