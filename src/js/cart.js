@@ -15,11 +15,9 @@ function renderCartContents() {
 
 function cartItemTemplate(item) {
   const newItem = `<li class="cart-card divider">
+  <span class="cart-card__remove" data-id="${item.Id}">X</span>
   <a href="#" class="cart-card__image">
-    <img
-      src="${item.Image}"
-      alt="${item.Name}"
-    />
+    <img src="${item.Image}" alt="${item.Name}" />
   </a>
   <a href="#">
     <h2 class="card__name">${item.Name}</h2>
@@ -32,4 +30,22 @@ function cartItemTemplate(item) {
   return newItem;
 }
 
+function removeFromCart(id) {
+  let cartItems = getLocalStorage("so-cart") || [];
+  const index = cartItems.findIndex(item => item.Id === id);
+  
+  if (index !== -1) {
+    cartItems.splice(index, 1); 
+    localStorage.setItem("so-cart", JSON.stringify(cartItems));
+    renderCartContents();
+  }
+}
+
 renderCartContents();
+
+document.querySelector(".product-list").addEventListener("click", (e) => {
+  if (e.target.classList.contains("cart-card__remove")) {
+    const productId = e.target.dataset.id;
+    removeFromCart(productId);
+  }
+});
